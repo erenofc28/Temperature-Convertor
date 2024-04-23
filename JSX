@@ -1,0 +1,43 @@
+import React, { useState } from 'react'
+import './temperature.css'
+const Temperature = () => {
+
+    const[degree,setDegree]=useState(0);
+    const[degreeToFahrenheit,setDegreeToFahrenheit]=useState(0);
+    const[degreeToCelsius,setDegreeToCelsius]=useState(0);
+    const[value,setValue]=useState("Celsius");
+    const[symbol,setSymbol]=useState("C")
+    console.log('degree',degree)
+  return (
+    <>
+    <div className="container">
+        <h2>Temperature Convertor</h2>
+        <input type="text" onChange={(e)=>{
+            setDegree(e.target.value);
+
+
+        }} />
+        <div className="space"></div>
+        <button onClick={()=>{
+            setDegreeToCelsius((degree-32)/1.8);
+            setValue("Celsius");
+            setSymbol("C");
+        }}>Fahrenheit to Celsius</button>
+
+
+
+        <button onClick={()=>{
+            setDegreeToFahrenheit(       (degree*1.8)+32);
+            setValue("Fahrenheit");
+            setSymbol("F");
+        }}>Celsius to Fahrenheit</button>
+        <div className="result">
+           <p> {value} : {value==="Celsius"?degreeToCelsius:degreeToFahrenheit} {symbol}</p>
+        </div>
+    </div>
+      
+    </>
+  )
+}
+
+export default Temperature;
